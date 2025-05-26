@@ -117,18 +117,22 @@ a:hover i {
 }
 
 .main .users {
-    display: flex;
     width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 15px;
 }
 
 .main .card {
-    width: 25%;
+    width: 100%;
     margin: 10px;
     background: #fff;
     text-align: center;
     border-radius: 10px;
     padding: 10px;
     box-shadow: 0 20px 35pc rgba(0, 0, 0, 0.1);
+
+
 }
 
 .user.card i {
@@ -147,19 +151,16 @@ a:hover i {
     text-transform: uppercase;
 }
 
-.users table {
-    margin: auto;
+.users .per {
+    margin: 20px 0;
+
 }
 
 .users .per span {
-    padding: 5px;
+    margin: 20px;
+    padding: 10px 25px;
     border-radius: 10px;
     background: rgb(223, 223, 223);
-}
-
-.users td {
-    font-size: 14px;
-    padding-right: 15px;
 }
 
 .users .card button {
@@ -180,81 +181,13 @@ a:hover i {
 
 /* main section ここまで */
 
-/* Attendance section ここから */
-
-.attendance {
-    margin-top: 20px;
-    text-transform: capitalize;
-}
-
-.attendance_list {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
-}
-
-.table {
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 15px;
-    min-width: 100%;
-    overflow: hidden;
-    border-radius: 5px 5px 0 0;
-}
-
-.table thead tr {
-    color: #fff;
-    background: #34AF6D;
-    text-align: left;
-    font-weight: bold;
-}
-
-.table th,
-.table td {
-    padding: 12px 15px;
-}
-
-.table tbody tr {
-    border-bottom: 1px solid #ddd;
-}
-
-.table tbody tr:nth-last-of-type(even) {
-    background: #f3f3f3;
-}
-
-.table tbody tr.active {
-    font-weight: bold;
-    color: #4AD489;
-}
-
-.table tbody tr:last-of-type {
-    border-bottom: 2px solid #4AD489;
-}
-
-.table button {
-    padding: 6px 20px;
-    border-radius: 10px;
-    cursor: pointer;
-    background: transparent;
-    border: 1px solid #4AD489;
-}
-
-.table button:hover {
-    background: #4AD489;
-    color: #fff;
-    transition: 0.5rem;
-}
-/* Attendance section ここまで */
-
 /* modal ここから */
 
 #modal {
     width: 90%;
     height: 90%;
-    margin: auto;
+    /* gridが使えない為、時計の位置調整 */
+    padding: 120px;
     position: fixed;
     background: #000;
     opacity: 0.8;

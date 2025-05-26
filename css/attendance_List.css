@@ -1,0 +1,130 @@
+@charset "utf8";
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: "Poppins", sans-serif;
+    /* outline: 1px solid red; */
+}
+
+#wrapper {
+    background: rgb(226, 226, 226);
+}
+
+nav {
+    position: sticky;
+    top: 0;
+    bottom: 0;
+    height: 100vh;
+
+    left: 0;
+    width: 90px;
+    background: #fff;
+    overflow: hidden;
+    transition: 1s;
+}
+
+nav:hover {
+    width: 280px;
+    transition: 1s;
+}
+
+.logo {
+    text-align: center;
+    display: flex;
+    padding-bottom: 3rem;
+}
+
+.logo i {
+    width: 45px;
+    height: 45px;
+}
+
+.logo span {
+    font-weight: bold;
+    padding-left: 15px;
+    font-size: 18px;
+    margin-top: 10px;
+    text-transform: uppercase;
+}
+
+a {
+    position: relative;
+    width: 280px;
+    font-size: 14px;
+    color: rgb(85, 83, 83);
+    display: table;
+    padding: 10px;
+}
+
+nav .fas {
+    position: relative;
+    width: 70px;
+    height: 40px;
+    padding-top: 10px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.nav-item {
+    position: relative;
+    /* top: 12px; */
+    margin-left: 10px;
+}
+
+a:hover {
+    background: #eee;
+}
+
+a:hover i {
+    color: #34AF6D;
+    transition: 0.5s;
+}
+
+.logout {
+    position: absolute;
+    bottom: 0;
+}
+
+#container {
+    display: flex;
+}
+
+/* サラダバーここまで */
+
+
+.attendance {
+
+    width: 90%;
+    height: auto;
+    /* margin-top: 20px; */
+    margin: 20px auto;
+    text-transform: capitalize;
+}
+
+.attendance_list {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+
+.modalOpen {
+    padding: 6px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid #4AD489;
+}
+
+.modalOpen:hover {
+    background: #4AD489;
+    color: #fff;
+    transition: 0.5rem;
+}

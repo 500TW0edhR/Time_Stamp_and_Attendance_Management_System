@@ -16,12 +16,12 @@
         <div id="container">
             <nav>
                 <ul>
-                    <li><a href="#" class="logo">
+                    <li><a href="./index.html" class="logo">
                             <i class="fas fa-menorah"></i>
                             <span class="nav-item">ADMIN</span>
                         </a></li>
 
-                    <li><a href="#">
+                    <li><a href="./index.html">
                             <i class="fas fa-house"></i>
                             <span class="nav-item">Home</span>
                         </a></li>
@@ -41,7 +41,7 @@
                             <span class="nav-item">Report</span>
                         </a></li>
 
-                    <li><a href="#">
+                    <li><a href="./attendance_List.html">
                             <i class="fas fa-chart-bar"></i>
                             <span class="nav-item">Attendance</span>
                         </a></li>
@@ -65,6 +65,8 @@
                 </div>
 
                 <div id="modal">
+                    <a href="/index.html"><button>閉じる</button></a>
+
                     <div>
                         <div class="date" id="date_display"></div>
                         <div class="time" id="time_display"></div>
@@ -75,31 +77,21 @@
                         <button type="submit" class="work" disabled>退勤</button>
                     </div>
 
-                    <div class="clock">
-                        <p class="start_time"> </p>
-                        <p class="finish_time"> </p>
-                    </div>
+                    
                 </div><!-- end of #modal -->
 
                 <div class="users">
-                    <div class="card">
+                    <div class="card"><!-- max:340 -->
+
                         <i class="fa-solid fa-user fa-2x"></i>
                         <!-- 顔写真がある場合は上の<i>と下の<img>と入れ替え -->
                         <!-- <img src="" alt=""> -->
                         <h4>name1</h4>
                         <p>ability</p>
-                        <!-- <div class="per">
-                            <table>
-                                <tr>
-                                    <td><span>85%</span></td>
-                                    <td><span>87%</span></td>
-                                </tr>
-                                <tr>
-                                    <td>year</td>
-                                    <td>Month</td>
-                                </tr>
-                            </table>
-                        </div> -->
+                        <div class="per">
+                            <span class="in">出勤</span>
+                            <span class="out">退勤</span>
+                        </div>
                         <button class="modalOpen">Profile</button>
                     </div><!-- end of .card -->
 
@@ -109,18 +101,10 @@
                         <!-- <img src="" alt=""> -->
                         <h4>name2</h4>
                         <p>ability</p>
-                        <!-- <div class="per">
-                            <table>
-                                <tr>
-                                    <td><span>82%</span></td>
-                                    <td><span>85%</span></td>
-                                </tr>
-                                <tr>
-                                    <td>year</td>
-                                    <td>Month</td>
-                                </tr>
-                            </table>
-                        </div> -->
+                        <div class="per">
+                            <span class="in">出勤</span>
+                            <span class="out">退勤</span>
+                        </div>
                         <button class="modalOpen">Profile</button>
                     </div><!-- end of .card -->
 
@@ -131,18 +115,10 @@
                         <h4>name3</h4>
                         <p>ability</p>
                         <div class="per">
-                            <table>
-                                <tr>
-                                    <td><span>94%</span></td>
-                                    <td><span>92%</span></td>
-                                </tr>
-                                <tr>
-                                    <td>year</td>
-                                    <td>Month</td>
-                                </tr>
-                            </table>
+                            <span class="in">出勤</span>
+                            <span class="out">退勤</span>
                         </div>
-                        <button>Profile</button>
+                        <button class="modalOpen">Profile</button>
                     </div><!-- end of .card -->
 
                     <div class="card">
@@ -152,79 +128,39 @@
                         <h4>name4</h4>
                         <p>ability</p>
                         <div class="per">
-                            <table>
-                                <tr>
-                                    <td><span>85%</span></td>
-                                    <td><span>82%</span></td>
-                                </tr>
-                                <tr>
-                                    <td>year</td>
-                                    <td>Month</td>
-                                </tr>
-                            </table>
+                            <span class="in">出勤</span>
+                            <span class="out">退勤</span>
                         </div>
-                        <button>Profile</button>
+                        <button class="modalOpen">Profile</button>
+                    </div><!-- end of .card -->
+
+                    <div class="card">
+                        <i class="fa-solid fa-user fa-2x"></i>
+                        <!-- 顔写真がある場合は上の<i>と下の<img>と入れ替え -->
+                        <!-- <img src="" alt=""> -->
+                        <h4>name5</h4>
+                        <p>ability</p>
+                        <div class="per">
+                            <span class="in">出勤</span>
+                            <span class="out">退勤</span>
+                        </div>
+                        <button class="modalOpen">Profile</button>
+                    </div><!-- end of .card -->
+
+                    <div class="card">
+                        <i class="fa-solid fa-user fa-2x"></i>
+                        <!-- 顔写真がある場合は上の<i>と下の<img>と入れ替え -->
+                        <!-- <img src="" alt=""> -->
+                        <h4>name6</h4>
+                        <p>ability</p>
+                        <div class="per">
+                            <span class="in">出勤</span>
+                            <span class="out">退勤</span>
+                        </div>
+                        <button class="modalOpen">Profile</button>
                     </div><!-- end of .card -->
 
                 </div><!-- end of .users -->
-
-                <section class="attendance">
-                    <div class="attendance_list">
-                        <h1>Attendance List</h1>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>名前</th>
-                                    <th>部門</th>
-                                    <th>日付</th>
-                                    <th>出勤時間</th>
-                                    <th>退勤時間</th>
-                                    <th>詳細</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>ID1</td>
-                                    <td>name</td>
-                                    <td>Depart</td>
-                                    <td>date</td>
-                                    <td>joinTime</td>
-                                    <td>outTime</td>
-                                    <td><button>View</button></td>
-                                </tr>
-                                <tr>
-                                    <td>ID2</td>
-                                    <td>name</td>
-                                    <td>Depart</td>
-                                    <td>date</td>
-                                    <td>joinTime</td>
-                                    <td>outTime</td>
-                                    <td><button>View</button></td>
-                                </tr>
-                                <tr>
-                                    <td>ID3</td>
-                                    <td>name</td>
-                                    <td>Depart</td>
-                                    <td>date</td>
-                                    <td>joinTime</td>
-                                    <td>outTime</td>
-                                    <td><button>View</button></td>
-                                </tr>
-                                <tr>
-                                    <td>ID4</td>
-                                    <td>name</td>
-                                    <td>Depart</td>
-                                    <td>date</td>
-                                    <td>joinTime</td>
-                                    <td>outTime</td>
-                                    <td><button>View</button></td>
-                                </tr>
-                            </tbody>
-                        </table><!-- end of .table -->
-
-                    </div><!-- end of .attendance_list -->
-                </section><!-- end of .attendance -->
 
             </section><!-- end of .main -->
 
