@@ -2,27 +2,24 @@ window.addEventListener("DOMContentLoaded", () => {
 
     const modalOpen = document.querySelectorAll(".modalOpen");
     const modal = document.getElementById("modal");
+
+    const cards = document.querySelectorAll(".card");
     
-    for (m = 0; m < modalOpen.length; m++) {
-
-        modalOpen[m].addEventListener("click", () => {
-            modal.style.display = "block";
-        });
-    }
-
+    // 操作中のcardの情報を保持
+    let activeCard = null;
 
     const date_stamp = document.getElementById("date_display");
     const time_stamp = document.getElementById("time_display");
-    
+
     const start = document.querySelector(".start_time");
     const finish = document.querySelector(".finish_time");
     // console.log(finish);
 
     const workButtons = document.querySelectorAll('.work');
     const timeStampList = document.querySelector('.time_stamp dl');
-    
+
     // console.log();
-    
+
     const In = document.querySelectorAll(".in");
     const out = document.querySelectorAll(".out");
 
@@ -75,29 +72,46 @@ window.addEventListener("DOMContentLoaded", () => {
         time_display.textContent = time;
     }, 1000);
 
-    for(let q = 0; q > modalOpen.length; q++) {
 
-        workButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const employment = button.textContent;
-                // console.log(employment);
-                // createListItem(employment);
-                
-                if (employment == "出勤") {
-                    workButtons[0].disabled = true;
-                    workButtons[1].disabled = false;
-                    // In.style.backgroundColor = "#4AD489";
-                    start.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit'});
-                }
-                else if (employment == "退勤") {
-                    workButtons[0].disabled = false;
-                    workButtons[1].disabled = true;
-                    // out.style.backgroundColor = "#4AD489";
-                    finish.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit'});
-                }
-            });
+
+    // ボタンの個数を走査 -0to5 button識別OK-
+    for (let i = 0; i < cards.length; i++) {
+        // console.log(i);
+
+        // クリックされたカードの特定、modalOpen
+        cards[i].addEventListener("click", () => {
+            // display:noneの解除
+            modal.style.display = "block";
+
+            console.log([i]);//  no取得 ok
+            console.log(cards[i]);// button.modalOpen
+            
         });
+        
     }
 
 
+
+        // workButtons.forEach(button => {
+        //     button.addEventListener('click', () => {
+        //         // const employment = button.textContent;
+        //         // createListItem(employment);
+        
+        //         if (employment == "出勤") {
+        //             workButtons[0].disabled = true;
+        //             workButtons[1].disabled = false;
+        //             cards[s].In.style.backgroundColor = "#4AD489";
+        //             start.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        //         }
+        //         else if (employment == "退勤") {
+        //             workButtons[0].disabled = false;
+        //             workButtons[1].disabled = true;
+        //             cards[s].out.style.backgroundColor = "#4AD489";
+        //             finish.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        //         }
+        //     });
+        // });
+    
+
+    
 });
