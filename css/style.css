@@ -130,16 +130,19 @@ a:hover i {
     text-align: center;
     border-radius: 10px;
     padding: 10px;
-    box-shadow: 0 20px 35pc rgba(0, 0, 0, 0.1);
-
-
+    /* 35pc を 35px に修正しました */
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1); 
+    cursor: pointer; /* カード自体がクリック可能であることを示唆 */
 }
 
-.user.card i {
+/* .user.card i のセレクタは HTML に .user クラスがないため、コメントアウトか削除を推奨 */
+/* .user.card i {
     width: 70px;
     height: 70px;
     border-radius: 50%;
-}
+} */
+/* 代わりに .card i を使うか、必要に応じて適切なセレクタを設定してください */
+
 
 .users .card h4 {
     text-transform: uppercase;
@@ -153,17 +156,21 @@ a:hover i {
 
 .users .per {
     margin: 20px 0;
-
+    display: flex; /* inとoutを横並びにするために追加 */
+    justify-content: center; /* 中央寄せ */
+    gap: 10px; /* inとoutの間に隙間 */
 }
 
 .users .per span {
-    margin: 20px;
+    margin: 0; /* 親要素のgapで調整するためマージンを0に */
     padding: 10px 25px;
     border-radius: 10px;
     background: rgb(223, 223, 223);
+    transition: background-color 0.3s ease; /* 色変化をスムーズに */
 }
 
-.users .card button {
+/* HTMLから button.modalOpen が削除されたため、以下のルールは不要か見直しが必要です */
+/* .users .card button {
     width: 100%;
     margin-top: 8px;
     padding: 7px;
@@ -177,96 +184,121 @@ a:hover i {
     background: #4AD489;
     color: #fff;
     transition: 0.5s;
-}
+} */
 
 /* main section ここまで */
 
 /* modal ここから */
 
 #modal {
-    width: 90%;
-    height: 90%;
-    /* gridが使えない為、時計の位置調整 */
-    padding: 120px;
+    width: 100vw; /* 画面全体を覆うように変更 */
+    height: 100vh; /* 画面全体を覆うように変更 */
     position: fixed;
-    background: #000;
-    opacity: 0.8;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8); /* 透明度を指定できるrgbaに変更 */
     z-index: 10;
 
-    display: none;
+    /* モーダルコンテンツを中央に配置するためのFlexboxを追加 */
+    display: none; /* これを有効にすることで、モーダルを非表示にする際はJavaScriptで `display = 'block'` を設定 */
+    justify-content: center;
+    align-items: center;
 }
 
+.modal-content { /* 新しく追加したラッパーのスタイル */
+    background: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    position: relative; /* 閉じるボタンの配置のため */
+    width: 600px; /* 適宜調整 */
+    max-width: 90%; /* レスポンシブ対応 */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    color: #333; /* モーダルコンテンツのデフォルト文字色 */
+}
+
+.modalCloseButton { /* 新しく追加した閉じるボタンのスタイル */
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #999;
+}
+.modalCloseButton:hover {
+    color: #333;
+}
+
+
+/* 日付と時刻のスタイルはそのまま */
 .date {
-    color: #eee;
+    color: #333; /* モーダルコンテンツの背景に合わせて色を調整 */
     font-size: 1.5rem;
     font-weight: 600;
     text-align: center;
+    margin-bottom: 10px;
 }
 
 .time {
-    color: #eee;
+    color: #333; /* モーダルコンテンツの背景に合わせて色を調整 */
     font-size: 4rem;
     font-weight: 900;
     text-align: center;
+    margin-bottom: 30px;
 }
 
-.works {
-    width: 60vw;
-    margin: 0 auto;
 
+/* clock (出勤・退勤時間表示) のスタイルを調整 */
+.clock {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%; /* 親要素に合わせる */
+    margin-bottom: 30px;
+}
+
+.clock span {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #555;
+    white-space: nowrap; /* テキストが改行されないように */
+}
+
+
+.works {
+    width: 100%; /* 親要素に合わせる */
+    margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
     justify-content: space-evenly;
 }
 
-.clock {
-    display: flex;
-    margin: 0 auto;
-    width: 80vw;
-    justify-content: space-evenly;
-    
-    /* width: 50vw; */
-    /* justify-content: space-around; */
-    /* ※ まぁ好みでｗ */
-}
-
-
 .work {
-    width: 300px;
-    height: 150px;
-    font-size: 2.5rem;
+    width: 200px; /* サイズを少し調整 */
+    height: 100px; /* サイズを少し調整 */
+    font-size: 2rem; /* フォントサイズを調整 */
     font-weight: 900;
     color: #00FF33;
-    border: #00FF33;
+    border: 2px solid #00FF33; /* borderの太さも指定 */
     border-radius: 10px;
     cursor: pointer;
+    background-color: #fff; /* デフォルト背景を白に */
+    transition: all 0.3s ease; /* ホバー効果をスムーズに */
 }
 
 .work:hover {
     color: #fff;
     background-color: #00FF33;
-    cursor: pointer;
 }
 
+.work:disabled { /* disableされたボタンのスタイル */
+    color: #bbb;
+    border-color: #bbb;
+    background-color: #f0f0f0;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* modal ここまで */

@@ -4,11 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://use.fontawesome.com/releases/v6.2.0/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
-    <!-- how to create Dashboard with HTML and CSS | Create Attendanre -->
-    <title>Document</title>
+    <title>Attendance Dashboard</title>
 </head>
 
 <body>
@@ -64,113 +62,85 @@
                     <i class="fas fa-user-cog"></i>
                 </div>
 
-                <!-- モーダルウィンド -->
                 <div id="modal">
-                    <!-- <a href="/index.html"><button>閉じる</button></a> -->
+                    <div class="modal-content">
+                        <!-- <button class="modalCloseButton">閉じる</button> -->
+                        <div>
+                            <div class="date" id="date_display"></div>
+                            <div class="time" id="time_display"></div>
+                        </div>
 
-                    <div>
-                        <div class="date" id="date_display"></div>
-                        <div class="time" id="time_display"></div>
+                        <div class="clock"> <span class="start_time_modal">出勤: --:--</span>
+                            <span class="finish_time_modal">退勤: --:--</span>
+                        </div>
+
+                        <div class="works">
+                            <button type="submit" class="work punch-in">出勤</button>
+                            <button type="submit" class="work punch-out" disabled>退勤</button>
+                        </div>
                     </div>
-
-                    <div class="works">
-                        <button type="submit" class="work">出勤</button>
-                        <button type="submit" class="work" disabled>退勤</button>
-                    </div>
-
-                </div><!-- end of #modal -->
-
-
-                <!-- 個人カード -->
+                </div>
                 <div class="users">
 
-                    <div class="card">
+                    <div class="card" data-user-id="user1">
                         <i class="fa-solid fa-user fa-2x"></i>
-                        <!-- 顔写真がある場合は上の<i>と下の<img>と入れ替え -->
-                        <!-- <img src="" alt=""> -->
                         <h4>name1</h4>
                         <p>ability</p>
                         <div class="per">
                             <span class="in">出勤</span>
                             <span class="out">退勤</span>
                         </div>
-                        <!-- <button class="modalOpen">Profile</button> -->
-                    </div><!-- end of .card -->
-
-                    <div class="card">
+                    </div>
+                    <div class="card" data-user-id="user2">
                         <i class="fa-solid fa-user fa-2x"></i>
-                        <!-- 顔写真がある場合は上の<i>と下の<img>と入れ替え -->
-                        <!-- <img src="" alt=""> -->
                         <h4>name2</h4>
                         <p>ability</p>
                         <div class="per">
                             <span class="in">出勤</span>
                             <span class="out">退勤</span>
                         </div>
-                        <!-- <button class="modalOpen">Profile</button> -->
-                    </div><!-- end of .card -->
-
-                    <div class="card">
+                    </div>
+                    <div class="card" data-user-id="user3">
                         <i class="fa-solid fa-user fa-2x"></i>
-                        <!-- 顔写真がある場合は上の<i>と下の<img>と入れ替え -->
-                        <!-- <img src="" alt=""> -->
                         <h4>name3</h4>
                         <p>ability</p>
                         <div class="per">
                             <span class="in">出勤</span>
                             <span class="out">退勤</span>
                         </div>
-                        <!-- <button class="modalOpen">Profile</button> -->
-                    </div><!-- end of .card -->
-
-                    <div class="card">
+                    </div>
+                    <div class="card" data-user-id="user4">
                         <i class="fa-solid fa-user fa-2x"></i>
-                        <!-- 顔写真がある場合は上の<i>と下の<img>と入れ替え -->
-                        <!-- <img src="" alt=""> -->
                         <h4>name4</h4>
                         <p>ability</p>
                         <div class="per">
                             <span class="in">出勤</span>
                             <span class="out">退勤</span>
                         </div>
-                        <!-- <button class="modalOpen">Profile</button> -->
-                    </div><!-- end of .card -->
-
-                    <div class="card">
+                    </div>
+                    <div class="card" data-user-id="user5">
                         <i class="fa-solid fa-user fa-2x"></i>
-                        <!-- 顔写真がある場合は上の<i>と下の<img>と入れ替え -->
-                        <!-- <img src="" alt=""> -->
                         <h4>name5</h4>
                         <p>ability</p>
                         <div class="per">
                             <span class="in">出勤</span>
                             <span class="out">退勤</span>
                         </div>
-                        <!-- <button class="modalOpen">Profile</button> -->
-                    </div><!-- end of .card -->
-
-                    <div class="card">
+                    </div>
+                    <div class="card" data-user-id="user6">
                         <i class="fa-solid fa-user fa-2x"></i>
-                        <!-- 顔写真がある場合は上の<i>と下の<img>と入れ替え -->
-                        <!-- <img src="" alt=""> -->
                         <h4>name6</h4>
                         <p>ability</p>
                         <div class="per">
                             <span class="in">出勤</span>
                             <span class="out">退勤</span>
                         </div>
-                        <!-- <button class="modalOpen">Profile</button> -->
-                    </div><!-- end of .card -->
-
-                </div><!-- end of .users -->
-
-            </section><!-- end of .main -->
-
-        </div><!-- end of #container -->
-    </div><!-- end of #wrapper -->
-    <!-- <script src="./JavaScript/main.js"></script> -->
-    <script src="./JavaScript/test.js"></script>
-    <!-- <script src="./JavaScript/cruch.js"></script> -->
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <script src="./JavaScript/main.js"></script>
 </body>
 
 </html>
