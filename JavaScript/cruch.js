@@ -1,17 +1,18 @@
 window.addEventListener("DOMContentLoaded", () => {
     // DOM要素の取得
     const modal = document.getElementById("modal");
-    const modalCloseButton = modal.querySelector('a > button'); 
-    const cards = document.querySelectorAll(".card");
+    // モーダル内の「閉じる」ボタン（<a>タグの中にあるbutton要素）
+    const modalCloseButton = modal.querySelector('a > button');
+    const cards = document.querySelectorAll(".card"); // すべてのユーザーカード
     const date_display = document.getElementById("date_display");
     const time_display = document.getElementById("time_display");
-    const workButtons = document.querySelectorAll('.work');
+    const workButtons = document.querySelectorAll('.work'); // モーダル内の「出勤」と「退勤」ボタン
 
     // 現在操作中のカードの情報を保持する変数
     let activeCard = null;
 
     // クリックされた出勤/退勤の情報を一時的に記憶する変数
-    let attendanceRecord = {}; 
+    let attendanceRecord = {};
 
     // --- 日付の表示を更新する関数 ---
     const updateDateDisplay = () => {
@@ -24,7 +25,7 @@ window.addEventListener("DOMContentLoaded", () => {
         let date = `${year}年${month}月${day}日 (${week_ja[week]}曜日)`;
         date_display.textContent = date;
     };
-    updateDateDisplay();
+    updateDateDisplay(); // 初回実行
 
     // --- 時刻の表示を更新する関数 ---
     const updateTimeDisplay = () => {
@@ -40,42 +41,56 @@ window.addEventListener("DOMContentLoaded", () => {
         let time = `${h} : ${m} : ${s}`;
         time_display.textContent = time;
     };
-    setInterval(updateTimeDisplay, 1000);
+    setInterval(updateTimeDisplay, 1000); // 1秒ごとに更新
+
 
     // --- 各カードにクリックイベントリスナーを設定 (モーダルを開くトリガー) ---
     cards.forEach(card => {
         card.addEventListener("click", () => {
-            console.log();
-            modal.style.display = "block";
+            modal.style.display = "block"; // モーダルを表示
 
-            activeCard = card; 
-            
+            // クリックされたカードを activeCard に保存
+            activeCard = card;
+
+            // モーダルが開かれた際、該当カードの現在の勤怠状態に合わせてボタンを有効/無効化する
             const inStatusSpan = activeCard.querySelector(".per .in");
+            if (inStatusSpan && inStatusSpan.style.backgroundColor === "rgb(74, 212, 137)") {
+                workButtons[0].disabled = true;  // 出勤ボタンを無効化
+                workButtons[1].disabled = false; // 退勤ボタンを有効化
+            } else {
+                workButtons[0].disabled = false; // 出勤ボタンを有効化
+                workButtons[1].disabled = true;  // 退勤ボタンを無効化
+            }
         });
     });
 
+
     // --- モーダルを閉じる処理 (「閉じる」ボタンの場合) ---
-    if (modalCloseButton) { 
+    if (modalCloseButton) {
         modalCloseButton.parentNode.addEventListener("click", (event) => {
-            event.preventDefault();
-            modal.style.display = "none";
-            activeCard = null;
-            attendanceRecord = {};
+            event.preventDefault(); // <a>タグのデフォルトのページ遷移を停止
+            modal.style.display = "none"; // モーダルを非表示に
+            activeCard = null; // activeCard をリセット
+            attendanceRecord = {}; // 記録変数もリセット
         });
     }
+
 
     // --- モーダル内の「出勤」「退勤」ボタンの処理 ---
     workButtons.forEach(button => {
         button.addEventListener('click', () => {
-            const action = button.textContent;
+            const action = button.textContent; // クリックされたボタンのテキスト（"出勤" または "退勤"）
 
+            // activeCard が設定されていることを確認 (どのユーザーの勤怠かを特定)
             if (activeCard) {
                 const inSpan = activeCard.querySelector(".per .in");
                 const outSpan = activeCard.querySelector(".per .out");
                 const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
+                // ユーザー名も取得
                 const userName = activeCard.querySelector('h4') ? activeCard.querySelector('h4').textContent : '不明なユーザー';
 
+                // attendanceRecord 変数に情報を記憶
                 attendanceRecord = {
                     userName: userName,
                     action: action,
@@ -88,32 +103,29 @@ window.addEventListener("DOMContentLoaded", () => {
                     workButtons[0].disabled = true;
                     workButtons[1].disabled = false;
 
-
-                    // ★「出勤」を青色に、既存の「退勤」をデフォルト色に
-                    if (inSpan) inSpan.style.backgroundColor = "#00FF33"; // 黄緑色
-                    if (outSpan) outSpan.style.backgroundColor = "rgb(223, 223, 223)"; // デフォルト色
+                    if (inSpan) inSpan.style.backgroundColor = "#4AD489";
+                    if (outSpan) outSpan.style.backgroundColor = "rgb(223, 223, 223)";
 
                     console.log(`[記録] ${attendanceRecord.userName} が ${attendanceRecord.time} に ${attendanceRecord.action} しました。`);
                     console.log("記憶されたデータ:", attendanceRecord);
 
-                } 
+                }
                 // 退勤ボタンがクリックされた場合
                 else if (action === "退勤") {
                     workButtons[0].disabled = false;
                     workButtons[1].disabled = true;
 
-                    // ★「退勤」を青色に、既存の「出勤」をデフォルト色に
-                    if (outSpan) outSpan.style.backgroundColor = "#00FF33"; // 青色
-                    if (inSpan) inSpan.style.backgroundColor = "rgb(223, 223, 223)"; // デフォルト色
+                    if (outSpan) outSpan.style.backgroundColor = "#4AD489";
+                    if (inSpan) inSpan.style.backgroundColor = "rgb(223, 223, 223)";
 
                     console.log(`[記録] ${attendanceRecord.userName} が ${attendanceRecord.time} に ${attendanceRecord.action} しました。`);
                     console.log("記憶されたデータ:", attendanceRecord);
                 }
 
-                // 出勤・退勤ボタンクリック後にモーダルを閉じる
+                // ★ここが新しい追加点：出勤・退勤ボタンクリック後にモーダルを閉じる
                 modal.style.display = "none";
-                activeCard = null;
-                attendanceRecord = {};
+                activeCard = null; // activeCard もリセット
+                attendanceRecord = {}; // 記録変数もリセット
             } else {
                 console.warn("エラー: activeCardが設定されていません。モーダルが予期せず開かれた可能性があります。");
             }

@@ -98,7 +98,6 @@ a:hover i {
 
 
 .attendance {
-
     width: 90%;
     height: auto;
     /* margin-top: 20px; */
@@ -115,16 +114,3 @@ a:hover i {
     box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
 }
 
-.modalOpen {
-    padding: 6px 20px;
-    border-radius: 10px;
-    cursor: pointer;
-    background: transparent;
-    border: 1px solid #4AD489;
-}
-
-.modalOpen:hover {
-    background: #4AD489;
-    color: #fff;
-    transition: 0.5rem;
-}
