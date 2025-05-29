@@ -1,9 +1,12 @@
+// js/attendance_list.js の先頭に追加
+import { userStaticInfo } from './user_data.js';
+
 window.addEventListener("DOMContentLoaded", () => {
     // --- DOM要素の取得 ---
     const attendanceTableBody = document.getElementById("attendance-table-body"); // 勤怠一覧テーブルの<tbody>要素
 
     // --- データ記憶方法の設定 ---
-    const USE_LOCAL_STORAGE = false; // sessionStorage を使用 (test.js と合わせる)
+    const USE_LOCAL_STORAGE = false; // sessionStorage を使用 (main.js と合わせる)
 
     // --- ストレージ選択ヘルパー関数 ---
     const getStorage = () => {
@@ -18,18 +21,6 @@ window.addEventListener("DOMContentLoaded", () => {
         return `${year}-${month}-${day}`;
     };
 
-    // --- 各ユーザーの固定情報（名前、部門） ---
-    // ここに、あなたの従業員のIDに対応する名前と部門の情報を定義します。
-    // 例: { "user1": { name: "山田太郎", department: "営業部" }, ... }
-    const userStaticInfo = {
-        "user1": { name: "山田太郎", department: "営業部" },
-        "user2": { name: "田中花子", department: "開発部" },
-        "user3": { name: "佐藤次郎", department: "経理部" },
-        "user4": { name: "鈴木愛", department: "人事部" },
-        "user5": { name: "高橋健太", department: "営業部" },
-        "user6": { name: "渡辺美咲", department: "開発部" }
-        // 必要に応じてここにさらにユーザーを追加してください
-    };
 
     // --- 勤怠データを読み込み、テーブルに表示する関数 ---
     const loadAndDisplayAttendanceData = () => {
